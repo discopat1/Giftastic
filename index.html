@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Giftastic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script src="assets/javascript/app.js"></script>
+</head>
+<body>
+    <button data-search="deadlift">Deadlift</button> 
+    <button data-search="squat">Squat</button> 
+    <button data-search="weight-lifting-clean">Clean</button> <button data-search="Bulgarian Split Squat">Bulgarian Split Squat</button>
+
+    <script>
+        $("button").on("click", function() {
+            var x = $(this).data("search");
+            
+            var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=QQLYwIRiL8DfkOF92OaclKYi9THes8Ig&limit=10";
+
+            $.ajax({
+                url: queryUrl,
+                method: 'GET',
+            }).then(function(response) {
+                console.log(response)
+                for (var i = 0; i<response.data.length; i++) {
+                    $('body').append("<p>Rating: "+response.data[i].rating+"<p>");
+                    // $(body).append("<img>" response.data[i]);
+
+                }
+            });
+
+        })
+    </script>
+</body>
+</html>
