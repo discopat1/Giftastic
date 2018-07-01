@@ -13,97 +13,8 @@
     <script src="assets/javascript/app.js"></script>
 </head>
 <body>
-    <!-- <h1>Power-lifting Exercises</h1>
-
-    <form id="exercise-form">
-        <label for="exercise-input">Pick an exercise</label>
-        <input type="text" id="exercise-input">
-        <br>
-  
-        <input id="add-exercise" type="submit" value="Exercise">
-      </form>
-    <div id="button-div"></div>
-    <div id="gif-div"></div>
-
-    <script>
-        var topics = ['Deadlifts', 'Squats', 'Clean and press', 'Bulgarian Split Squats'];
-
-    function renderButtons() {
-
-        $("#button-div").empty();
-        for (var i=0; i<topics.length; i++) {
-            var b = $("<button>");
-            b.addClass("exercise");
-            b.attr("data-name", topics[i]);
-            b.text(topics[i]);
-            $("#button-div").append(b);
-        }
-    };
-        renderButtons();
-
-        $("#add-excercise").on("click", function(event) {
-            event.preventDefault();
-            var exercise = $("#add-exercise").val().trim();
-
-            topics.push(exercise);
             
-            renderButtons();
-        });
-
-        $("button").on("click", function(event) {
-            
-            event.preventDefault();
-            
-            var exercise = $("#add-exercise").val().trim();
-
-            topics.push(exercise);
-            
-            renderButtons();
-        function getGifs() {
-
-            var x = $(this).attr("data-name");
-
-            var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=QQLYwIRiL8DfkOF92OaclKYi9THes8Ig&limit=10";
-
-            $.ajax({
-                url: queryUrl,
-                method: 'GET',
-            }).then(function(response) {
-
-                for (var i = 0; i<response.data.length; i++) {
-
-                    var ratings = "<p>Rating: "+response.data[i].rating+"<p>";
-                    console.log(ratings);
-                    $('#gif-div').append(ratings);
-                    
-                    var gif = "<img src='"+ response.data[i].images.downsized_still.url+"'>";
-
-                    $('#gif-div').append(gif);
-                    
-                    $(".gif").on("click", function() {
-                        console.log("clicked")
-                    });
-                        
-                    // $(gif).addClass("gif");
-                    // $(gif).attr("data-still", response.data[i].images.downsized_still.url);
-                    // $(gif).attr("data-animate", response.data[i].images.downsized.url);
-                    // $(gif).attr("data-state", still);
-      
-                    // var state = $(this).attr("data-state");
-                    
-                    // if (state === "still") {
-                    //     $(this).attr("src", $(this).attr("data-animate"));
-                    //     $(this).attr("data-state", "animate");
-                    // } else {
-                    //     $(this).attr("src", $(this).attr("data-still"));
-                    //     $(this).attr("data-state", "still");
-                    // }
-                };
-
-                });
-            };
-        });
-    </script> -->
+        
     <div class="container">
         <h1>Power-lifting Exercises</h1>
     
@@ -120,84 +31,9 @@
           <input id="add-exercise" type="submit" value="Add an exercise">
         </form>
         <div id="buttons-div"></div>
+        <div id="gifs-here"></div>
         
-        <div id="exercise-div"></div>
-    
         
-        <script type="text/javascript">
-          // Initial array of exercises
-          var exercises = ["Deadlift", "Squat", "Clean and press", "Bulgarian split squat"];
-    
-          
-          function displayexerciseInfo() {
-    
-            var exercise = $(this).attr("data-name");
-            var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + exercise + "&api_key=QQLYwIRiL8DfkOF92OaclKYi9THes8Ig&limit=10";
-    
-            $.ajax({
-              url: queryURL,
-              method: "GET"
-            }).then(function(response) {
-                
-            for (var i = 0; i<response.data.length; i++) {
-
-
-            var ratings = "<p>Rating: "+response.data[i].rating+"<p>";
-            console.log(ratings);
-            $('#exercise-div').append(ratings);
-
-            var gif = "<img src='"+ response.data[i].images.downsized_still.url+"'>";
-            
-
-            $('#exercise-div').append(gif);
-             
-        
-    
-                };
-            });
-          };
-    
-          // Function for displaying exercise data
-          function renderButtons() {
-            
-            $("#buttons-div").empty();
-    
-            // Looping through the array of exercises
-            for (var i = 0; i < exercises.length; i++) {
-    
-              // Then dynamicaly generating buttons for each exercise in the array
-              // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-              var a = $("<button>");
-              // Adding a class of exercise-btn to our button
-              a.addClass("exercise-btn");
-              // Adding a data-attribute
-              a.attr("data-name", exercises[i]);
-              // Providing the initial button text
-              a.text(exercises[i]);
-              // Adding the button to the buttons-view div
-              $("#buttons-div").append(a);
-            }
-          }
-    
-          // This function handles events where a exercise button is clicked
-          $("#add-exercise").on("click", function(event) {
-            event.preventDefault();
-            // This line grabs the input from the textbox
-            var exercise = $("#exercise-input").val().trim();
-    
-            // Adding exercise from the textbox to our array
-            exercises.push(exercise);
-    
-            // Calling renderButtons which handles the processing of our exercise array
-            renderButtons();
-          });
-    
-          // Adding a click event listener to all elements with a class of "exercise-btn"
-          $(document).on("click", ".exercise-btn", displayexerciseInfo);
-    
-          // Calling the renderButtons function to display the intial buttons
-          renderButtons();
-        </script>
       </div>
 </body>
 </html>
